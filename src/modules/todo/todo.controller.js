@@ -2,7 +2,7 @@ const todoSchema = require('./todo.schema');
 
 const getAllTodo = async (req,res)=>{
     return res.send({
-        data: await todoSchema.find({}).skip(1)
+        data: await todoSchema.find({}).populate('user','_id username')
     });
 }
 
@@ -19,6 +19,7 @@ const createTodo = async (req,res)=>{
     await todoSchema.create({
         title:req.body.title,
         status:req.body.status,
+        user: req.body.user
     });
     res.status(200).send('Todo created')
 }
@@ -35,6 +36,7 @@ const updateTodo = async (req, res) => {
       title: req.body.title,
       status: req.body.status,
     };
+    console.log(todoId)
     await todoSchema.findByIdAndUpdate(todoId, updatedTodo);
     res.status(200).send('Todo updated');
   };

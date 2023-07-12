@@ -8,6 +8,10 @@ const dataSchema = new mongoose.Schema({
     status: {
         required: true,
         type: String
+    },
+    user:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     }
 },{
     timestamps:true

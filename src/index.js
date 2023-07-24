@@ -24,7 +24,7 @@ app.use('/user',userRoutes)
 
 // mongoose.connect("mongodb+srv://abindrashakya:abs12345678@firstproject.9lljnan.mongodb.net");
 mongoose.connect("mongodb+srv://abindra:shakya123@abindracluster.0cyegia.mongodb.net/?retryWrites=true&w=majority");
-const database = mongoose.connection;
+const database = mongoose.connection; 
 database.on('error', (error) => {
     console.log(error)
 });
